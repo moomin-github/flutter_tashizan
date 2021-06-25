@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: '足し算'),
+      home: MyHomePage(title: '10までの足し算'),
     );
   }
 }
@@ -37,14 +37,15 @@ class _MyHomePageState extends State<MyHomePage> {
   void _createSum() {
     setState(() {
       isShowResult = false;
-      result = random.nextInt(11) + 1; // 1 ~ 10
-      rightNum = random.nextInt(result - 1) + 1; // 1 ~ result
-      leftNum = result - rightNum;
+      int tmpResult = random.nextInt(10) + 1; // 1 ~ 10
+      rightNum = random.nextInt(tmpResult - 1) + 1; // 1 ~ result
+      leftNum = tmpResult - rightNum;
     });
   }
 
   void _showResult() {
     setState(() {
+      result = rightNum + leftNum;
       isShowResult = true;
     });
   }
